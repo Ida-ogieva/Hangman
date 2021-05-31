@@ -73,8 +73,6 @@ function unclickable (e) {
 
 
 function displayId (e) {
-    document.getElementById(e.target.id).style.backgroundColor = "grey";
-    document.getElementById(e.target.id).style.
     let location = String(e.target.id);
     console.log(location);
     for (let letter of country1) {
@@ -106,153 +104,179 @@ function displayLetters (e) {
     letterA.innerText = "A";
     letterA.classList.add("letter");
     letterA.id = "a"
+    letterA.style.border = "2px solid black";
     parent.appendChild(letterA);
 
     
     letterB.innerText = "B";
     letterB.classList.add("letter");
     letterB.id = "b"
+    letterB.style.border = "2px solid black";
     parent.appendChild(letterB);
 
 
     letterC.innerText = "C";
     letterC.classList.add("letter");
     letterC.id = "c"
+    letterC.style.border = "2px solid black";
     parent.appendChild(letterC);
 
     letterD.innerText = "D";
     letterD.classList.add("letter");
     letterD.id = "d"
+    letterD.style.border = "2px solid black";
     parent.appendChild(letterD);
 
     
     letterE.innerText = "E";
     letterE.classList.add("letter");
     letterE.id = "e"
+    letterE.style.border = "2px solid black";
     parent.appendChild(letterE);
 
     letterF.innerText = "F";
     letterF.classList.add("letter");
     letterF.id = "f"
+    letterF.style.border = "2px solid black";
     parent.appendChild(letterF);
 
     
     letterG.innerText = "G";
     letterG.classList.add("letter");
     letterG.id = "g"
+    letterG.style.border = "2px solid black";
     parent.appendChild(letterG);
 
     
     letterH.innerText = "H";
     letterH.classList.add("letter");
     letterH.id = "h"
+    letterH.style.border = "2px solid black";
     parent.appendChild(letterH);
 
     
     letterI.innerText = "I";
     letterI.classList.add("letter");
     letterI.id = "i"
+    letterI.style.border = "2px solid black";
     parent.appendChild(letterI);
 
     
     letterJ.innerText = "J";
     letterJ.classList.add("letter");
     letterJ.id = "j"
+    letterJ.style.border = "2px solid black";
     parent.appendChild(letterJ);
 
     
     letterK.innerText = "K";
     letterK.classList.add("letter");
     letterK.id = "k"
+    letterK.style.border = "2px solid black";
     parent.appendChild(letterK);
 
     
     letterL.innerText = "L";
     letterL.classList.add("letter");
     letterL.id = "l"
+    letterL.style.border = "2px solid black";
     parent.appendChild(letterL);
 
     
     letterM.innerText = "M";
     letterM.classList.add("letter");
     letterM.id = "m"
+    letterM.style.border = "2px solid black";
     parent.appendChild(letterM);
 
     
     letterN.innerText = "N";
     letterN.classList.add("letter");
     letterN.id = "n"
+    letterN.style.border = "2px solid black";
     parent.appendChild(letterN);
 
     
     letterO.innerText = "O";
     letterO.classList.add("letter");
     letterO.id = "o"
+    letterO.style.border = "2px solid black";
     parent.appendChild(letterO);
 
     
     letterP.innerText = "P";
     letterP.classList.add("letter");
     letterP.id = "p"
+    letterP.style.border = "2px solid black";
     parent.appendChild(letterP);
 
     
     letterQ.innerText = "Q";
     letterQ.classList.add("letter");
     letterQ.id = "q"
+    letterQ.style.border = "2px solid black";
     parent.appendChild(letterQ);
 
     
     letterR.innerText = "R";
     letterR.classList.add("letter");
     letterR.id = "r"
+    letterR.style.border = "2px solid black";
     parent.appendChild(letterR);
 
     
     letterS.innerText = "S";
     letterS.classList.add("letter");
     letterS.id = "s"
+    letterS.style.border = "2px solid black";
     parent.appendChild(letterS);
 
     
     letterT.innerText = "T";
     letterT.classList.add("letter");
     letterT.id = "t"
+    letterT.style.border = "2px solid black";
     parent.appendChild(letterT);
 
     
     letterU.innerText = "U";
     letterU.classList.add("letter");
     letterU.id = "u"
+    letterU.style.border = "2px solid black";
     parent.appendChild(letterU);
 
     
     letterV.innerText = "V";
     letterV.classList.add("letter");
     letterV.id = "v"
+    letterV.style.border = "2px solid black";
     parent.appendChild(letterV);
 
     
     letterW.innerText = "W";
     letterW.classList.add("letter");
     letterW.id = "w"
+    letterW.style.border = "2px solid black";
     parent.appendChild(letterW);
 
     
     letterX.innerText = "X";
     letterX.classList.add("letter");
     letterX.id = "x"
+    letterX.style.border = "2px solid black";
     parent.appendChild(letterX);
 
     
     letterY.innerText = "Y";
     letterY.classList.add("letter");
     letterY.id = "y"
+    letterY.style.border = "2px solid black";
     parent.appendChild(letterY);
 
     letterZ.innerText = "Z";
     letterZ.classList.add("letter");
     letterZ.id = "z"
+    letterZ.style.border = "2px solid black";
     parent.appendChild(letterZ);
 
     const idEl = String(e.target.id);
