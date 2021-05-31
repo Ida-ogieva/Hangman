@@ -2,10 +2,13 @@
 /*----- constants -----*/
 const country1 = ["nigeria"];
 
+const alphabets = "abcdefghijklmnopqrstuvwxyz";
+
 /*----- app's state (variables) -----*/
 let category;
 let words;
 let winner;
+let guesses;
 
 
 /*----- cached element references -----*/
@@ -13,6 +16,7 @@ const row2El = document.getElementById("row2");
 const row1El = document.getElementById("row1");
 row1El.innerText = " ";
 const newArray = [];
+const mainEl = document.getElementById("main");
 const allbuttons = document.getElementById("allbuttons");
 const gameName = document.getElementById("name");
 const selectCat = document.getElementById("select");
@@ -49,6 +53,7 @@ const letterY = document.createElement("div");
 const letterZ = document.createElement("div");
 
 
+
 /*----- event listeners -----*/
 for (let button of buttonsEl) {
     button.addEventListener("click", displayLetters, true);
@@ -58,53 +63,50 @@ parent.addEventListener("click", displayId);
 
 
 
-function draw() {
-    const canvas = document.getElementById("drawing");
-
-    if (!canvas.getContext) {
-        return;
-    }
-    const ctx = canvas.getContext('2d');
-
-    ctx.strokeStyle = "red";
-    ctx.lineWidth = 5;
-
-    ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(100,100);
-    ctx.stroke();
-}
-
 /*----- functions -----*/
 
 
-function unclickable (e) {
-    for (let button of buttonsEl) {
-        button.removeEventListener("click", displayLetters, true);
-    }
-}
+// function unclickable (e) {
+//     for (let button of buttonsEl) {
+//         button.removeEventListener("click", displayLetters, true);
+//     }
+// }
 
+
+guesses = 6;
+sum = 0;
 
 function displayId (e) {
     let location = String(e.target.id);
-    for (let letter of country1) {
-        for (let i=0; i<letter.length; i++) {
-            if (location === letter[i]) {
-                let locationUppercase = location.toUpperCase();
-                newArray[i] = locationUppercase;
-                console.log(newArray);
-                const displayArray = row1El.innerText.split(' ');
-                displayArray[i] = locationUppercase;
-                row1El.innerText = displayArray.join(' ');
-            } if (!letter.includes(location)) {
-                draw ();
+
+    for (let country of country1) {
+        if (country.includes(location)) {
+            for (let i = 0; i < country.length; i++) {
+                if (location === country[i]) {
+                    let locationUppercase = location.toUpperCase();
+                    newArray[i] = locationUppercase;
+                    const displayArray = row1El.innerText.split(' ');
+                    displayArray[i] = locationUppercase;
+                    row1El.innerText = displayArray.join(' ');
+                } console.log(guesses); 
             }
-        
+        } else {
+            guesses = guesses - 1;
+            console.log(guesses);
+        }
+    } for (item in newArray) {
+        if (alphabets.includes(item)){
+            sum = sum + 1;
+            console.log(sum);
         }
     }
+    if (guesses === 0) {
+        gameName.textContent = "You lost! Game over";
+        gameName.style.color = "red";
+        mainEl.appendChild(gameName);
+        console.log(gameName);
+    }
 }
-
-
 
 
 
@@ -303,7 +305,7 @@ function displayLetters (e) {
         row1El.innerText = " _ _ _ _ _ _ _";
     }
 
-    unclickable ();
+    // unclickable ();
     clearText ();
     imageDisplay();
 
@@ -313,6 +315,9 @@ function displayLetters (e) {
 
     // }
 } 
+
+
+
 
 
 
