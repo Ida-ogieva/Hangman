@@ -1,25 +1,29 @@
-// const letterEl = document.getElementById("row2");
-// letterEl.addEventListener("click", click);
 
-let word1 = ["l", "a", "g", "o", "s"];
-
+/*----- constants -----*/
 const row2El = document.getElementById("row2");
 const row1El = document.getElementById("row1");
+const allbuttons = document.getElementById("allbuttons");
+const gameName = document.getElementById("name");
+const selectCat = document.getElementById("select");
 
+
+/*----- app's state (variables) -----*/
+let word1 = ["l", "a", "g", "o", "s"];
+
+/*----- cached element references -----*/
+
+/*----- event listeners -----*/
 const buttonsEl = document.getElementsByClassName("buttons");
 for (let button of buttonsEl) {
     button.addEventListener("click", displayLetters, true);
 }
 
+/*----- functions -----*/
 function unclickable () {
     for (let button of buttonsEl) {
         button.removeEventListener("click", displayLetters, true);
     }
 }
-
-const allbuttons = document.getElementById("allbuttons");
-const gameName = document.getElementById("name");
-const selectCat = document.getElementById("select");
 
 function clearText () {
     gameName.remove();
@@ -33,20 +37,6 @@ function imageDisplay () {
     const parentImage = document.getElementById("left");
     parentImage.appendChild(image);
 }
-
-
-// const button1El = document.getElementById("button1");
-// button1El.addEventListener("click", displayLetters);
-
-// const button2El = document.getElementById("button2");
-// button2El.addEventListener("click", displayLetters);
-
-// const button3El = document.getElementById("button3");
-// button3El.addEventListener("click", displayLetters);
-
-// buttonsEl.addEventListener("click", displayLetters);
-
-
 
 function displayLetters (e) {
     const parent = document.getElementById("row2");
