@@ -1,7 +1,15 @@
 
 /*----- constants -----*/
+const country1 = ["nigeria"];
+
+/*----- app's state (variables) -----*/
+
+
+/*----- cached element references -----*/
 const row2El = document.getElementById("row2");
 const row1El = document.getElementById("row1");
+row1El.innerText = " ";
+const newArray = [];
 const allbuttons = document.getElementById("allbuttons");
 const gameName = document.getElementById("name");
 const selectCat = document.getElementById("select");
@@ -37,10 +45,6 @@ const letterX = document.createElement("div");
 const letterY = document.createElement("div");
 const letterZ = document.createElement("div");
 
-/*----- app's state (variables) -----*/
-let word1 = ["l", "a", "g", "o", "s"];
-
-/*----- cached element references -----*/
 
 /*----- event listeners -----*/
 for (let button of buttonsEl) {
@@ -53,14 +57,30 @@ parent.addEventListener("click", displayId);
 
 
 /*----- functions -----*/
+
+
 function unclickable (e) {
     for (let button of buttonsEl) {
         button.removeEventListener("click", displayLetters, true);
     }
 }
 
+
 function displayId (e) {
-    console.log(e.target.id);
+    let location = String(e.target.id);
+    console.log(location);
+    for (let letter of country1) {
+        for (let i=0; i<letter.length; i++) {
+            if (location === letter[i]) {
+                let locationUppercase = location.toUpperCase();
+                newArray[i] = locationUppercase;
+                console.log(newArray);
+                const displayArray = row1El.innerText.split(' ');
+                displayArray[i] = locationUppercase;
+                row1El.innerText = displayArray.join(' ');
+            }
+        }
+    } 
 }
 
 function clearText () {
@@ -229,7 +249,7 @@ function displayLetters (e) {
 
     const idEl = String(e.target.id);
     if (idEl === "button1") {
-        row1El.innerText = " _ _ _ _ _";
+        row1El.innerText = " _ _ _ _ _ _ _";
     }
 
     unclickable ();
