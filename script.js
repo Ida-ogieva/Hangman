@@ -3,6 +3,9 @@
 const country1 = ["nigeria"];
 
 /*----- app's state (variables) -----*/
+let category;
+let words;
+let winner;
 
 
 /*----- cached element references -----*/
@@ -53,14 +56,24 @@ for (let button of buttonsEl) {
 
 parent.addEventListener("click", displayId);
 
-parent.removeEventListener("click", alreadyCalled);
 
-function alreadyCalled () {
 
+function draw() {
+    const canvas = document.getElementById("drawing");
+
+    if (!canvas.getContext) {
+        return;
+    }
+    const ctx = canvas.getContext('2d');
+
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 5;
+
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(100,100);
+    ctx.stroke();
 }
-
-
-
 
 /*----- functions -----*/
 
@@ -74,7 +87,6 @@ function unclickable (e) {
 
 function displayId (e) {
     let location = String(e.target.id);
-    console.log(location);
     for (let letter of country1) {
         for (let i=0; i<letter.length; i++) {
             if (location === letter[i]) {
@@ -84,10 +96,17 @@ function displayId (e) {
                 const displayArray = row1El.innerText.split(' ');
                 displayArray[i] = locationUppercase;
                 row1El.innerText = displayArray.join(' ');
+            } if (!letter.includes(location)) {
+                draw ();
             }
+        
         }
-    } 
+    }
 }
+
+
+
+
 
 function clearText () {
     gameName.remove();
