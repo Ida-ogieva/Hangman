@@ -53,6 +53,12 @@ for (let button of buttonsEl) {
 
 parent.addEventListener("click", displayId);
 
+parent.removeEventListener("click", alreadyCalled);
+
+function alreadyCalled () {
+
+}
+
 
 
 
@@ -67,6 +73,8 @@ function unclickable (e) {
 
 
 function displayId (e) {
+    document.getElementById(e.target.id).style.backgroundColor = "grey";
+    document.getElementById(e.target.id).style.
     let location = String(e.target.id);
     console.log(location);
     for (let letter of country1) {

@@ -64,7 +64,7 @@ p {
     font-size: 70px;
     align-items:stretch;
     text-align: center;
-    
+    cursor: pointer;
 }
 
 .container {
@@ -84,6 +84,7 @@ p {
     background-color:rgb(228, 33, 33);
     font-size: 55px;
     margin-bottom: 70px;
+    cursor: pointer;
 }
 
 .buttons:hover {
