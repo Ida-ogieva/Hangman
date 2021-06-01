@@ -58,6 +58,13 @@ const letterZ = document.createElement("div");
 const divParent = document.getElementById("containerid");
 const imgEl = document.createElement("img");
 topCenterEl.appendChild(imgEl);
+// document.body.style.backgroundImage = "url('https://i.imgur.com/q6Cs1ly.jpg')";
+// document.body.style.backgroundSize = "cover";
+// document.body.style.backgroundPosition = "center";
+
+function removebackgroundimage () {
+    document.body.style.backgroundImage = "none";
+}
 
 const newGameButton = document.createElement("button");
 newGameButton.id = "newgame";
@@ -170,17 +177,17 @@ function displayId (e) {
     }
 
     if (guesses === 5) {
-        imgEl.src = "https://i.imgur.com/aCepvzv.png";
+        imgEl.src = "https://i.imgur.com/foSTOmq.jpg";
     } else if (guesses === 4 ) {
-        imgEl.src = "https://i.imgur.com/iawvp7O.png";
+        imgEl.src = "https://i.imgur.com/d8iQp4i.jpg";
     } else if (guesses === 3 ) {
-        imgEl.src = "https://i.imgur.com/YuSWTyD.png";
+        imgEl.src = "https://i.imgur.com/rEvi2nz.jpg";
     } else if (guesses === 2 ) {
-        imgEl.src = "https://i.imgur.com/zWPlwPq.png";
+        imgEl.src = "https://i.imgur.com/yF5xoXH.jpg";
     } else if (guesses === 1) {
-        imgEl.src = "https://i.imgur.com/RJZDrM6.png";
+        imgEl.src = "https://i.imgur.com/jyNB9KU.jpg";
     } else if (guesses <= 0) {
-        imgEl.src = "https://i.imgur.com/U1JmygX.png";
+        imgEl.src = "https://i.imgur.com/X4AmYcd.jpg";
     }
 }
 
@@ -395,6 +402,7 @@ function displayLetters (e) {
     // unclickable ();
     clearText ();
     imageDisplay();
+    removebackgroundimage();
 
     console.log(typeof(e.target.id));
 
@@ -402,7 +410,7 @@ function displayLetters (e) {
 
     // }
 
-    imgEl.src = "https://i.imgur.com/MCeyBMG.png";
+    imgEl.src = "https://i.imgur.com/2IRg5yd.jpg";
     
 } 
 
