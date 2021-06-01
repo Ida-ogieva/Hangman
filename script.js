@@ -1,6 +1,8 @@
 
 /*----- constants -----*/
 const country1 = ["nigeria"];
+const singer1 = ["dido"];
+const city1 = ["kumasi"];
 
 const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
@@ -9,6 +11,7 @@ let category;
 let words;
 let winner;
 let guesses;
+let array;
 
 
 /*----- cached element references -----*/
@@ -97,10 +100,34 @@ parent.addEventListener("click", displayId);
 guesses = 6;
 sum = 0;
 
+
+/*
+for (let singer of singer1)
+
+
+
+
+*/
+
+
+
 function displayId (e) {
+
+
+    // if (e.target.id === "button1") {
+    //     array = country1;
+    // } else if (e.target.id === "button2") {
+    //     array = singer1;
+    // } else if (e.target.id === "button3") {
+    //     array = city1;
+    // }
+
+    // console.log(array);
+
+    // let array = country1;
     let location = String(e.target.id);
 
-    for (let country of country1) {
+    for (let country of array) {
         if (country.includes(location)) {
             for (let i = 0; i < country.length; i++) {
                 if (location === country[i]) {
@@ -156,6 +183,7 @@ function displayId (e) {
         imgEl.src = "https://i.imgur.com/cZ43yqV.png";
     }
 }
+
 
 function noClick () {
     parent.removeEventListener("click", displayId);
@@ -355,13 +383,20 @@ function displayLetters (e) {
     const idEl = String(e.target.id);
     if (idEl === "button1") {
         row1El.innerText = " _ _ _ _ _ _ _";
+        array = country1;
+    } else if (idEl === "button2") {
+        row1El.innerText = "_ _ _ _";
+        array = singer1;
+    } else if (idEl === "button3") {
+        row1El.innerText = "_ _ _ _ _ _";
+        array = city1;
     }
 
     // unclickable ();
     clearText ();
     imageDisplay();
 
-    console.log(e.target.id);
+    console.log(typeof(e.target.id));
 
     // if (e.target.id === button1) {
 
