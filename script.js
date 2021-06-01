@@ -88,7 +88,14 @@ function displayId (e) {
                     const displayArray = row1El.innerText.split(' ');
                     displayArray[i] = locationUppercase;
                     row1El.innerText = displayArray.join(' ');
-                } console.log(guesses); 
+                    if (newArray.join('') === country.toUpperCase()) {
+                        gameName.textContent = "Winner!";
+                        gameName.style.color = "green";
+                        mainEl.appendChild(gameName);
+                        noClick();
+                        parent.remove();
+                    }
+                } 
             }
         } else {
             guesses = guesses - 1;
@@ -105,9 +112,14 @@ function displayId (e) {
         gameName.style.color = "red";
         mainEl.appendChild(gameName);
         console.log(gameName);
+        noClick();
+        parent.remove();
     }
 }
 
+function noClick () {
+    parent.removeEventListener("click", displayId);
+}
 
 
 function clearText () {
