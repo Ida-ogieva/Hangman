@@ -51,7 +51,25 @@ const letterW = document.createElement("div");
 const letterX = document.createElement("div");
 const letterY = document.createElement("div");
 const letterZ = document.createElement("div");
+const divParent = document.getElementById("containerid");
 
+const newGameButton = document.createElement("button");
+newGameButton.id = "newgame";
+newGameButton.classList.add("buttons");
+
+const newButtonParent = document.createElement("div");
+newButtonParent.id = "newdiv";
+
+function buttonShow() {
+    divParent.appendChild(newButtonParent);
+    newButtonParent.appendChild(newGameButton);
+    newGameButton.textContent = "New Game";
+}
+
+function startNewGame () {
+    gameName.textContent = "Hangman";
+    mainEl.appendChild(gameName);
+}
 
 
 /*----- event listeners -----*/
@@ -94,6 +112,9 @@ function displayId (e) {
                         mainEl.appendChild(gameName);
                         noClick();
                         parent.remove();
+                        buttonShow ();
+                        startNewGame ();
+                        
                     }
                 } 
             }
@@ -114,6 +135,7 @@ function displayId (e) {
         console.log(gameName);
         noClick();
         parent.remove();
+        buttonShow();
     }
 }
 

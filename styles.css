@@ -85,6 +85,8 @@ p {
     font-size: 55px;
     margin-bottom: 70px;
     cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .buttons:hover {
@@ -105,7 +107,25 @@ p {
     justify-content:space-evenly;
 }
 
-#gallows svg {
+#newgame {
+    background-color:rgb(228, 33, 33);
+    font-size: 55px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#newdiv {
+    display: grid;
+    grid-column: 2/7;
+    grid-row: 1/2;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+/* #gallows svg {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -129,9 +149,8 @@ p {
 
 @keyframes dash {
     to {
-        stroke-dashoffset: 0;
-    }
-}
+        stroke-dashoffset: 0; */
+  
 /* #gallows {
     border-left: 10px solid black;
     border-top: 10px solid black;
