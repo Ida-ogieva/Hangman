@@ -52,6 +52,8 @@ const letterX = document.createElement("div");
 const letterY = document.createElement("div");
 const letterZ = document.createElement("div");
 const divParent = document.getElementById("containerid");
+const imgEl = document.createElement("img");
+parentImage.appendChild(imgEl);
 
 const newGameButton = document.createElement("button");
 newGameButton.id = "newgame";
@@ -138,6 +140,20 @@ function displayId (e) {
         parent.remove();
         buttonShow();
         row1El.remove();
+    }
+
+    if (guesses === 5) {
+        imgEl.src = "https://i.imgur.com/XqQZkOs.png";
+    } else if (guesses === 4 ) {
+        imgEl.src = "https://i.imgur.com/eaKLa6m.png";
+    } else if (guesses === 3 ) {
+        imgEl.src = "https://i.imgur.com/ZChHMdO.png";
+    } else if (guesses === 2 ) {
+        imgEl.src = "https://i.imgur.com/LXDw8OP.png";
+    } else if (guesses === 1) {
+        imgEl.src = "https://i.imgur.com/BiSkP7I.png";
+    } else if (guesses <= 0) {
+        imgEl.src = "https://i.imgur.com/cZ43yqV.png";
     }
 }
 
@@ -350,7 +366,11 @@ function displayLetters (e) {
     // if (e.target.id === button1) {
 
     // }
+
+    imgEl.src = "https://i.imgur.com/yKIi0qs.png";
+    
 } 
+
 
 
 
