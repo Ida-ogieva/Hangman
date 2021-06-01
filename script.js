@@ -66,9 +66,10 @@ function buttonShow() {
     newGameButton.textContent = "New Game";
 }
 
+newGameButton.addEventListener("click", startNewGame);
+
 function startNewGame () {
-    gameName.textContent = "Hangman";
-    mainEl.appendChild(gameName);
+    location.reload();
 }
 
 
@@ -113,7 +114,7 @@ function displayId (e) {
                         noClick();
                         parent.remove();
                         buttonShow ();
-                        startNewGame ();
+                        row1El.remove();
                         
                     }
                 } 
@@ -136,6 +137,7 @@ function displayId (e) {
         noClick();
         parent.remove();
         buttonShow();
+        row1El.remove();
     }
 }
 
