@@ -68,6 +68,16 @@ document.body.style.backgroundImage = "url('https://i.imgur.com/q6Cs1ly.jpg')";
 document.body.style.backgroundSize = "cover";
 document.body.style.backgroundPosition = "center";
 
+const audio1 = new Audio('file:///Users/ida/Downloads/click.mp3');
+
+const audio2 = new Audio('file:///Users/ida/Downloads/buzzer.mp3');
+
+const audio3 = new Audio('file:///Users/ida/Downloads/bell.mp3');
+
+const cheers = new Audio('file:///Users/ida/Downloads/cheers.mp3');
+
+const lose = new Audio('file:///Users/ida/Downloads/loser.mp3');
+
 
 
 // letterSelectedEl.innerHTML = "Incorrect Guesses:"
@@ -96,12 +106,14 @@ newGameButton.addEventListener("click", startNewGame);
 
 function startNewGame () {
     location.reload();
+    
 }
 
 
 /*----- event listeners -----*/
 for (let button of buttonsEl) {
     button.addEventListener("click", displayLetters, true);
+    audio1.play();
 }
 
 parent.addEventListener("click", displayId);
@@ -125,7 +137,11 @@ function displayId (e) {
         if (word.includes(location)) {
             for (let i = 0; i < word.length; i++) {
                 if (location === word[i]) {
+                    
                     let locationUppercase = location.toUpperCase();
+                    if (newArray.includes(locationUppercase) === false) {
+                        audio3.play();
+                    };
                     newArray[i] = locationUppercase;
                     const displayArray = row1El.innerText.split(' ');
                     displayArray[i] = locationUppercase;
@@ -141,6 +157,7 @@ function displayId (e) {
                         allbuttons.remove();
                         hintEl.remove();
                         letterSelectedEl.remove();
+                        cheers.play();
                     }
                 } 
             }
@@ -148,6 +165,7 @@ function displayId (e) {
             if (wrongArray.includes(location)) {
                 return wrongArray;
             } else {
+                audio2.play();
                 wrongArray.push(location);
                 sum = sum + (wrongArray[wrongArray.length - 1]).toUpperCase() + ", ";
                 letterSelectedEl.innerHTML = "Incorrect Guesses:" + sum;
@@ -192,6 +210,8 @@ function displayId (e) {
     } if (guesses <= 0) {
         imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
         hintEl.remove();
+        lose.play();
+        row1El.textContent = singer1[0].toUpperCase();
     }  if (newArray.join('') === word.toUpperCase()) {
         imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
     }
@@ -213,6 +233,7 @@ function clearText () {
 
 
 function displayLetters (e) {
+    audio1.play();
     row1El.style.borderTop = "2px solid black";
 
     letterA.innerText = "A";
