@@ -119,6 +119,7 @@ let sum = " ";
 
 
 function displayId (e) {
+    document.getElementById(e.target.id).style.backgroundColor = "grey";
     let location = String(e.target.id);
     for (let word of array) {
         if (word.includes(location)) {
@@ -165,7 +166,7 @@ function displayId (e) {
             noClick();
             parent.remove();
             buttonShow();
-            row1El.remove();
+            // row1El.remove();
             allbuttons.remove()
         } if (guesses === 5) {
             imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
