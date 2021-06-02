@@ -15,6 +15,7 @@ let array;
 
 
 /*----- cached element references -----*/
+const letterSelectedEl = document.getElementById("right");
 const hintEl = document.getElementById("hintsection");
 const countryEl = document.getElementById("button1");
 const singerEl = document.getElementById("button2");
@@ -69,7 +70,7 @@ document.body.style.backgroundPosition = "center";
 
 
 
-
+// letterSelectedEl.innerHTML = "Incorrect Guesses:"
 
 
 
@@ -111,7 +112,7 @@ parent.addEventListener("click", displayId);
 
 
 guesses = 6;
-sum = 0;
+let sum = " ";
 
 
 
@@ -132,11 +133,13 @@ function displayId (e) {
                         gameName.textContent = "Winner!";
                         gameName.style.color = "green";
                         divParent.appendChild(gameName);
+                        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
                         noClick();
                         parent.remove();
                         buttonShow ();
                         allbuttons.remove();
                         hintEl.remove();
+                        letterSelectedEl.remove();
                     }
                 } 
             }
@@ -145,34 +148,36 @@ function displayId (e) {
                 return wrongArray;
             } else {
                 wrongArray.push(location);
-                console.log(wrongArray);
-                guesses = guesses - 1;
-                // console.log(guesses);
+                sum = sum + (wrongArray[wrongArray.length - 1]).toUpperCase() + ", ";
+                letterSelectedEl.innerHTML = "Incorrect Guesses:" + sum;
+                letterSelectedEl.style.color = "red";
+                } guesses = guesses - 1;
             }
-            
-        }
-    } if (guesses === 0) {
-        gameName.textContent = "You lost! Game over";
-        gameName.style.color = "red";
-        divParent.appendChild(gameName);
-        console.log(gameName);
-        noClick();
-        parent.remove();
-        buttonShow();
-        row1El.remove();
-        allbuttons.remove()
-    } if (guesses === 5) {
-        imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
-    } else if (guesses === 4 ) {
-        imgEl.src = "https://i.imgur.com/FwM5s1f.jpg";
-    } else if (guesses === 3 ) {
-        imgEl.src = "https://i.imgur.com/MZaJ0B6.jpg";
-    } else if (guesses === 2 ) {
-        imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
-    } else if (guesses === 1) {
-        imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
-        // hintEl.innerText = "Hint";
-        if (array === country1) {
+        
+                                 //curly braces here 
+
+        
+        if (guesses === 0) {
+            gameName.textContent = "You lost! Game over";
+            gameName.style.color = "red";
+            divParent.appendChild(gameName);
+            console.log(gameName);
+            noClick();
+            parent.remove();
+            buttonShow();
+            row1El.remove();
+            allbuttons.remove()
+        } if (guesses === 5) {
+            imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
+        } if (guesses === 4 ) {
+            imgEl.src = "https://i.imgur.com/FwM5s1f.jpg";
+        } if (guesses === 3 ) {
+            imgEl.src = "https://i.imgur.com/MZaJ0B6.jpg";
+        } if (guesses === 2 ) {
+            imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
+        } if (guesses === 1) {
+            imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
+            if (array === country1) {
             // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
         } else if (array === singer1) {
             // hintEl.innerHTML = "<strong>Hint</strong> <br> <br> <br> <br> <br>";
@@ -181,12 +186,20 @@ function displayId (e) {
             hintEl.style.backgroundSize = "75%";
             hintEl.style.backgroundRepeat = "no-repeat";
         } else if (array === city1) {
+
         }
-    } else if (guesses <= 0) {
+    } if (guesses <= 0) {
         imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
         hintEl.remove();
+    }  if (newArray.join('') === word.toUpperCase()) {
+        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
     }
+       
+
 }
+
+}
+
 
 function noClick () {
     parent.removeEventListener("click", displayId);
