@@ -15,7 +15,7 @@ let array;
 
 
 /*----- cached element references -----*/
-let hintEl = document.getElementById("hintsection");
+const hintEl = document.getElementById("hintsection");
 const countryEl = document.getElementById("button1");
 const singerEl = document.getElementById("button2");
 const cityEl = document.getElementById("button3");
@@ -67,6 +67,13 @@ document.body.style.backgroundImage = "url('https://i.imgur.com/q6Cs1ly.jpg')";
 document.body.style.backgroundSize = "cover";
 document.body.style.backgroundPosition = "center";
 
+
+
+
+
+
+
+
 function removebackgroundimage () {
     document.body.style.backgroundImage = "none";
 }
@@ -103,43 +110,15 @@ parent.addEventListener("click", displayId);
 /*----- functions -----*/
 
 
-// function unclickable (e) {
-//     for (let button of buttonsEl) {
-//         button.removeEventListener("click", displayLetters, true);
-//     }
-// }
-
-
 guesses = 6;
 sum = 0;
 
 
-/*
-for (let singer of singer1)
-
-
-
-
-*/
 
 
 
 function displayId (e) {
-
-
-    // if (e.target.id === "button1") {
-    //     array = country1;
-    // } else if (e.target.id === "button2") {
-    //     array = singer1;
-    // } else if (e.target.id === "button3") {
-    //     array = city1;
-    // }
-
-    // console.log(array);
-
-    // let array = country1;
     let location = String(e.target.id);
-
     for (let word of array) {
         if (word.includes(location)) {
             for (let i = 0; i < word.length; i++) {
@@ -156,29 +135,23 @@ function displayId (e) {
                         noClick();
                         parent.remove();
                         buttonShow ();
-                        allbuttons.remove()
-                        
+                        allbuttons.remove();
+                        hintEl.remove();
                     }
                 } 
             }
         } else {
             if (wrongArray.includes(location)) {
-                console.log(guesses);
+                return wrongArray;
             } else {
                 wrongArray.push(location);
-            console.log(wrongArray);
-            guesses = guesses - 1;
-            console.log(guesses);
+                console.log(wrongArray);
+                guesses = guesses - 1;
+                // console.log(guesses);
             }
             
         }
-    } for (item in newArray) {
-        if (alphabets.includes(item)){
-            sum = sum + 1;
-            console.log(sum);
-        }
-    }
-    if (guesses === 0) {
+    } if (guesses === 0) {
         gameName.textContent = "You lost! Game over";
         gameName.style.color = "red";
         divParent.appendChild(gameName);
@@ -188,9 +161,7 @@ function displayId (e) {
         buttonShow();
         row1El.remove();
         allbuttons.remove()
-    }
-
-    if (guesses === 5) {
+    } if (guesses === 5) {
         imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
     } else if (guesses === 4 ) {
         imgEl.src = "https://i.imgur.com/FwM5s1f.jpg";
@@ -200,8 +171,6 @@ function displayId (e) {
         imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
     } else if (guesses === 1) {
         imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
-        
-
         // hintEl.innerText = "Hint";
         if (array === country1) {
             // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
@@ -219,21 +188,15 @@ function displayId (e) {
     }
 }
 
-
 function noClick () {
     parent.removeEventListener("click", displayId);
 }
-
 
 function clearText () {
     selectCat.remove();
     allbuttons.remove();
 }
 
-function imageDisplay () {
-    image.id = "gallows";
-    parentImage.appendChild(image);
-}
 
 function displayLetters (e) {
     row1El.style.borderTop = "2px solid black";
@@ -246,7 +209,6 @@ function displayLetters (e) {
     letterA.style.border = "2px solid white";
     parent.appendChild(letterA);
 
-    
     letterB.innerText = "B";
     letterB.classList.add("letter");
     letterB.id = "b"
@@ -254,7 +216,6 @@ function displayLetters (e) {
     letterB.style.backgroundColor = "black";
     letterB.style.color = "white";
     parent.appendChild(letterB);
-
 
     letterC.innerText = "C";
     letterC.classList.add("letter");
@@ -272,7 +233,6 @@ function displayLetters (e) {
     letterD.style.color = "white";
     parent.appendChild(letterD);
 
-    
     letterE.innerText = "E";
     letterE.classList.add("letter");
     letterE.id = "e"
@@ -289,7 +249,6 @@ function displayLetters (e) {
     letterF.style.color = "white";
     parent.appendChild(letterF);
 
-    
     letterG.innerText = "G";
     letterG.classList.add("letter");
     letterG.id = "g"
@@ -298,7 +257,6 @@ function displayLetters (e) {
     letterG.style.color = "white";
     parent.appendChild(letterG);
 
-    
     letterH.innerText = "H";
     letterH.classList.add("letter");
     letterH.id = "h"
@@ -307,7 +265,6 @@ function displayLetters (e) {
     letterH.style.color = "white";
     parent.appendChild(letterH);
 
-    
     letterI.innerText = "I";
     letterI.classList.add("letter");
     letterI.id = "i"
@@ -316,7 +273,6 @@ function displayLetters (e) {
     letterI.style.color = "white";
     parent.appendChild(letterI);
 
-    
     letterJ.innerText = "J";
     letterJ.classList.add("letter");
     letterJ.id = "j"
@@ -324,7 +280,6 @@ function displayLetters (e) {
     letterJ.style.backgroundColor = "black";
     letterJ.style.color = "white";
     parent.appendChild(letterJ);
-
     
     letterK.innerText = "K";
     letterK.classList.add("letter");
@@ -334,7 +289,6 @@ function displayLetters (e) {
     letterK.style.color = "white";
     parent.appendChild(letterK);
 
-    
     letterL.innerText = "L";
     letterL.classList.add("letter");
     letterL.id = "l"
@@ -342,7 +296,6 @@ function displayLetters (e) {
     letterL.style.backgroundColor = "black";
     letterL.style.color = "white";
     parent.appendChild(letterL);
-
     
     letterM.innerText = "M";
     letterM.classList.add("letter");
@@ -352,7 +305,6 @@ function displayLetters (e) {
     letterM.style.color = "white";
     parent.appendChild(letterM);
 
-    
     letterN.innerText = "N";
     letterN.classList.add("letter");
     letterN.id = "n"
@@ -361,7 +313,6 @@ function displayLetters (e) {
     letterN.style.color = "white";
     parent.appendChild(letterN);
 
-    
     letterO.innerText = "O";
     letterO.classList.add("letter");
     letterO.id = "o"
@@ -370,7 +321,6 @@ function displayLetters (e) {
     letterO.style.color = "white";
     parent.appendChild(letterO);
 
-    
     letterP.innerText = "P";
     letterP.classList.add("letter");
     letterP.id = "p"
@@ -379,7 +329,6 @@ function displayLetters (e) {
     letterP.style.color = "white";
     parent.appendChild(letterP);
 
-    
     letterQ.innerText = "Q";
     letterQ.classList.add("letter");
     letterQ.id = "q"
@@ -388,7 +337,6 @@ function displayLetters (e) {
     letterQ.style.color = "white";
     parent.appendChild(letterQ);
 
-    
     letterR.innerText = "R";
     letterR.classList.add("letter");
     letterR.id = "r"
@@ -397,7 +345,6 @@ function displayLetters (e) {
     letterR.style.color = "white";
     parent.appendChild(letterR);
 
-    
     letterS.innerText = "S";
     letterS.classList.add("letter");
     letterS.id = "s"
@@ -405,7 +352,6 @@ function displayLetters (e) {
     letterS.style.backgroundColor = "black";
     letterS.style.color = "white";
     parent.appendChild(letterS);
-
     
     letterT.innerText = "T";
     letterT.classList.add("letter");
@@ -415,7 +361,6 @@ function displayLetters (e) {
     letterT.style.color = "white";
     parent.appendChild(letterT);
 
-    
     letterU.innerText = "U";
     letterU.classList.add("letter");
     letterU.id = "u"
@@ -424,7 +369,6 @@ function displayLetters (e) {
     letterU.style.color = "white";
     parent.appendChild(letterU);
 
-    
     letterV.innerText = "V";
     letterV.classList.add("letter");
     letterV.id = "v"
@@ -433,7 +377,6 @@ function displayLetters (e) {
     letterV.style.color = "white";
     parent.appendChild(letterV);
 
-    
     letterW.innerText = "W";
     letterW.classList.add("letter");
     letterW.id = "w"
@@ -442,7 +385,6 @@ function displayLetters (e) {
     letterW.style.color = "white";
     parent.appendChild(letterW);
 
-    
     letterX.innerText = "X";
     letterX.classList.add("letter");
     letterX.id = "x"
@@ -451,7 +393,6 @@ function displayLetters (e) {
     letterX.style.color = "white";
     parent.appendChild(letterX);
 
-    
     letterY.innerText = "Y";
     letterY.classList.add("letter");
     letterY.id = "y"
@@ -473,12 +414,13 @@ function displayLetters (e) {
         row1El.innerText = " _ _ _ _ _ _ _";
         array = country1;
         countryEl.style.backgroundColor = "grey";
+
         singerEl.remove();
         cityEl.remove();
-        
         noclick();
         gameName.textContent = "Country"
         gameName.style.color = "grey";
+
     } else if (idEl === "button2") {
         row1El.innerText = "_ _ _ _";
         array = singer1;
@@ -506,16 +448,11 @@ function displayLetters (e) {
     }
     // unclickable ();
     clearText ();
-    imageDisplay();
+    // imageDisplay();
     removebackgroundimage();
 
 
     console.log(typeof(e.target.id));
-
-    // if (e.target.id === button1) {
-
-    // }
-
 
     imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
     
