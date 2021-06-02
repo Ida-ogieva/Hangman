@@ -15,6 +15,7 @@ let array;
 
 
 /*----- cached element references -----*/
+let hintEl = document.getElementById("hintsection");
 const countryEl = document.getElementById("button1");
 const singerEl = document.getElementById("button2");
 const cityEl = document.getElementById("button3");
@@ -151,7 +152,7 @@ function displayId (e) {
                     if (newArray.join('') === word.toUpperCase()) {
                         gameName.textContent = "Winner!";
                         gameName.style.color = "green";
-                        mainEl.appendChild(gameName);
+                        divParent.appendChild(gameName);
                         noClick();
                         parent.remove();
                         buttonShow ();
@@ -180,7 +181,7 @@ function displayId (e) {
     if (guesses === 0) {
         gameName.textContent = "You lost! Game over";
         gameName.style.color = "red";
-        mainEl.appendChild(gameName);
+        divParent.appendChild(gameName);
         console.log(gameName);
         noClick();
         parent.remove();
@@ -199,18 +200,22 @@ function displayId (e) {
         imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
     } else if (guesses === 1) {
         imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
-        let hintEl = document.getElementById("hintsection");
-        hintEl.innerText = "Hint";
+        
+
+        // hintEl.innerText = "Hint";
         if (array === country1) {
             // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
         } else if (array === singer1) {
-            // hintEl.innerHTML = "<strong>Hint</strong> <br> I am singing <br> <br> <br> <br>";
-            // hintEl.style.backgroundImage = "url('https://i.imgur.com/e5wVRJO.jpg')";
-            // hintEl.style.backgroundSize = "100%";
-
+            // hintEl.innerHTML = "<strong>Hint</strong> <br> <br> <br> <br> <br>";
+            hintEl.id = "hintsection";
+            hintEl.style.backgroundImage = "url('https://i.imgur.com/Y92lwh9.jpg')";
+            hintEl.style.backgroundSize = "75%";
+            hintEl.style.backgroundRepeat = "no-repeat";
+        } else if (array === city1) {
         }
     } else if (guesses <= 0) {
         imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
+        hintEl.remove();
     }
 }
 
@@ -221,9 +226,8 @@ function noClick () {
 
 
 function clearText () {
-    gameName.remove();
     selectCat.remove();
-    // allbuttons.remove();
+    allbuttons.remove();
 }
 
 function imageDisplay () {
@@ -232,6 +236,8 @@ function imageDisplay () {
 }
 
 function displayLetters (e) {
+    row1El.style.borderTop = "2px solid black";
+
     letterA.innerText = "A";
     letterA.classList.add("letter");
     letterA.style.backgroundColor = "black";
@@ -469,7 +475,10 @@ function displayLetters (e) {
         countryEl.style.backgroundColor = "grey";
         singerEl.remove();
         cityEl.remove();
+        
         noclick();
+        gameName.textContent = "Country"
+        gameName.style.color = "grey";
     } else if (idEl === "button2") {
         row1El.innerText = "_ _ _ _";
         array = singer1;
@@ -477,6 +486,8 @@ function displayLetters (e) {
         countryEl.remove();
         cityEl.remove();
         noclick();
+        gameName.textContent = "Singer"
+        gameName.style.color = "grey";
     } else if (idEl === "button3") {
         row1El.innerText = "_ _ _ _ _ _";
         array = city1;
@@ -484,6 +495,8 @@ function displayLetters (e) {
         singerEl.remove();
         countryEl.remove();
         noclick();
+        gameName.textContent = "City";
+        gameName.style.color = "grey";
     }
 
     function noclick () {
