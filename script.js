@@ -67,6 +67,7 @@ const letterY = document.createElement("div");
 const letterZ = document.createElement("div");
 const divParent = document.getElementById("containerid");
 const imgEl = document.createElement("img");
+const hintImgEl = document.createElement("img");
 topCenterEl.appendChild(imgEl);
 document.body.style.backgroundImage = "url('https://i.imgur.com/q6Cs1ly.jpg')";
 document.body.style.backgroundSize = "cover";
@@ -517,13 +518,27 @@ function displayId (e) {
         } if (guesses === 1) {
             imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
             if (array === country1) {
-            // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
+                if (spot === 0) {
+                    // hintImgEl.id = "hintsection";
+                    // divParent.appendChild(hintImgEl);
+                    // hintImgEl.src = "https://i.imgur.com/BJLLPOt.png";
+                    // hintImgEl.
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - located in North Africa<br> - shares borders with Morocco, Tunisia and Libya </p>";
+                    
+
+                }
+                        // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
         } else if (array === singer1) {
+            if (spot === 0) {
             // hintEl.innerHTML = "<strong>Hint</strong> <br> <br> <br> <br> <br>";
             hintEl.id = "hintsection";
             hintEl.style.backgroundImage = "url('https://i.imgur.com/Y92lwh9.jpg')";
             hintEl.style.backgroundSize = "75%";
             hintEl.style.backgroundRepeat = "no-repeat";
+            } else if (spot === 1){
+
+            }
         } else if (array === city1) {
 
         }
