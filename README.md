@@ -1,4 +1,4 @@
-## HANGMAN 
+# HANGMAN 
 
 Hangman is a classic game where a secret word is displayed and the player has to reveal the word by guessing what letters the word contains. 
 
@@ -7,3 +7,5 @@ To play, select a category between "Countries", "Singers" and "Cities". A secret
 * If incorrect, the letter selected is displayed on the screen as an incorrect guess and a body part is added to the gallows.
 
 Repeat until the game is won, or until six incorrect guesses where all body parts are added to the gallows and the game is lost. 
+
+![screenshot1](file:///Users/ida/Desktop/screenshot1.png)
