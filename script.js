@@ -1,8 +1,8 @@
 
 /*----- constants -----*/
-const country1 = ["algeria", "seychelles", "ghana"];
-const singer1 = ["dido", "pharell", "eagles"];
-const city1 = ["london", "miami", "zihuatenejo"];
+const country = ["algeria", "seychelles", "ghana"];
+const singer = ["dido", "pharell", "eagles"];
+const city = ["london", "miami", "zihuatenejo"];
 
 let spot;
 
@@ -348,7 +348,7 @@ function displayLetters (e) {
     if (idEl === "button1") {
         spot = Math.floor(Math.random() * 3);
         // row1El.innerText = " _ _ _ _ _ _ _";
-        array = country1;
+        array = country;
         let a = array[spot];
         let z = a.split('');
         for (var i = 0; i <z.length; i++){
@@ -369,7 +369,7 @@ function displayLetters (e) {
     } else if (idEl === "button2") {
         spot = Math.floor(Math.random() * 3);
         console.log(spot);
-        array = singer1;
+        array = singer;
         console.log(array);
         let a = array[spot];
         console.log(a);
@@ -399,7 +399,7 @@ function displayLetters (e) {
 
         spot = Math.floor(Math.random() * 3);
         console.log(spot);
-        array = city1;
+        array = city;
         let a = array[spot];
         let z = a.split('');
 
@@ -517,38 +517,38 @@ function displayId (e) {
             imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
         } if (guesses === 1) {
             imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
-            if (array === country1) {
+            if (array === country) {
                 if (spot === 0) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - located in North Africa<br> - shares borders with Morocco, Tunisia and Libya </p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - located in North Africa<br> - shares borders with Morocco, Tunisia and Libya </p>";
                 } else if (spot === 1) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - An island nation located northeast of Madagascar<br> - sea shells</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - An island nation located northeast of Madagascar<br> - sea shells</p>";
                 } else if (spot ===2 ) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - The second-most populous country in West Africa, after Nigeria<br> - birth country of Alex Ghose</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - The second-most populous country in West Africa, after Nigeria<br> - birth country of Alex Ghose</p>";
                 }                 
-            } else if (array === singer1) {
+            } else if (array === singer) {
                 if (spot === 0) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - british singer <br> - best known for her 2000's hit 'Thank You' and her feature with Eminem on 'Stan'</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - british singer <br> - best known for her 2000's hit 'Thank You' and her feature with Eminem on 'Stan'</p>";
                 } else if (spot === 1) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - singer-songwriter and producer <br> - 'Blurred Lines', 'Get Lucky', 'Happy'</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - singer-songwriter and producer <br> - 'Blurred Lines', 'Get Lucky', 'Happy'</p>";
                 } else if (spot === 2) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - American rock band responsible for one of the greatest songs of all time 'Hotel California'</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - American rock band responsible for one of the greatest songs of all time 'Hotel California'</p>";
                 } 
-            } else if (array === city1) {
+            } else if (array === city) {
                 if (spot === 0) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - Home to 'Big Ben' <br> - Arsenal, Chelsea, Tottenham, West Ham ...</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - Home to 'Big Ben' <br> - Arsenal, Chelsea, Tottenham, West Ham ...</p>";
                 } else if (spot === 1) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - located in Florida<br> - Dolphins, Marlins, Heat</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - located in Florida<br> - Dolphins, Marlins, Heat</p>";
                 } else if (spot ===2) {
                     hintEl.style.border = "1px solid black";
-                    hintEl.innerHTML = "<h1>HINT</h1><p> - located in Mexico<br> - final scene of The Shawshank Redemption</p>";
+                    hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - located in Mexico<br> - final scene of The Shawshank Redemption</p>";
                 }
             }
         } if (guesses <= 0) {
