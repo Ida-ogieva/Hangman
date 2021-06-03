@@ -11,8 +11,8 @@ The game is won when all letters of the word are guessed.
 
 ## SCREENSHOTS
 ![homescreen](https://i.imgur.com/1rccZ4q.jpg)
-![playingscreen](https://i.imgur.com/868LKCy.png)
-![winningscreen](https://i.imgur.com/VVc9LWy.png)
+![playingscreen1](https://i.imgur.com/SwlfOpR.png)
+![playingscreen2](https://i.imgur.com/868LKCy.png)
 
 ## TECHNOLOGIES USED
 * JavaScript, HTML, CSS.
