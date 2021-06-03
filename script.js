@@ -6,12 +6,12 @@ const city = ["london", "miami", "zihuatenejo"];
 
 /*----- app's state (variables) -----*/
 let spot;
-let guesses = 6;
 let array;
-let sum = " ";
 let renderedText;
-const newArray = [];
-const wrongArray = [];
+let newArray = [];
+let wrongArray = [];
+let sum = " ";
+let guesses = 6;
 
 /*----- cached element references -----*/
 const letterSelectedEl = document.getElementById("right");
@@ -331,7 +331,7 @@ function init (e) {
 function displayId (e) {
     document.getElementById(e.target.id).style.backgroundColor = "grey";
     let location = String(e.target.id);
-    let d = array[spot];
+    d = array[spot];
     for (let word of d) {
         if (d.includes(location)) {
             for (let i = 0; i < d.length; i++) {
