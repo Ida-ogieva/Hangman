@@ -1,16 +1,7 @@
 body {
     margin: 0;
     height: 100vh;
-    /* width: 100vw; */
 }
-
-/* h1 {
-    font-size: 100px;
-    margin-top: 30px;
-    text-align: center;
-    padding-bottom: 1px;
-    margin-bottom: 0;
-} */
 
 p {
     text-align: center;
@@ -49,7 +40,6 @@ p {
     grid-column: 1/8;
     text-align: center;
     font-size: 170px;
-    /* border-top: 2px solid black; */
 }
 
 #row2 {
@@ -61,7 +51,6 @@ p {
     justify-content:space-between;
     align-self: center;
 }
-
 
 .letter {
     font-size: 70px;
@@ -115,7 +104,6 @@ p {
     font-size: 55px;
     cursor: pointer;
     border-radius: 20px;
-    /* padding: 10px; */
 }
 
 #newdiv {
