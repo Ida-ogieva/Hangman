@@ -6,11 +6,12 @@ const city = ["london", "miami", "zihuatenejo"];
 
 /*----- app's state (variables) -----*/
 let spot;
-let category;
-let words;
-let winner;
-let guesses;
+let guesses = 6;
 let array;
+let sum = " ";
+let renderedText;
+const newArray = [];
+const wrongArray = [];
 
 /*----- cached element references -----*/
 const letterSelectedEl = document.getElementById("right");
@@ -19,18 +20,11 @@ const countryEl = document.getElementById("button1");
 const singerEl = document.getElementById("button2");
 const cityEl = document.getElementById("button3");
 const topCenterEl = document.getElementById("topcenter");
-const row2El = document.getElementById("row2");
-const row1El = document.getElementById("row1");
-row1El.innerText = " ";
-const newArray = [];
-const wrongArray = [];
-const mainEl = document.getElementById("main");
-const allbuttons = document.getElementById("allbuttons");
+const displayTextEl = document.getElementById("row1");
+const allButtons = document.getElementById("allbuttons");
 const gameName = document.getElementById("name");
-const selectCat = document.getElementById("select");
-const keyboardEl = document.getElementsByClassName("letter");
+const selectCategory = document.getElementById("select");
 const image = document.createElement("div");
-const parentImage = document.getElementById("left");
 const parent = document.getElementById("row2");
 const buttonsEl = document.getElementsByClassName("buttons");
 const letterA = document.createElement("div");
@@ -61,57 +55,51 @@ const letterY = document.createElement("div");
 const letterZ = document.createElement("div");
 const divParent = document.getElementById("containerid");
 const imgEl = document.createElement("img");
-const hintImgEl = document.createElement("img");
+const buttonClick = new Audio('file:///Users/ida/Downloads/click.mp3');
+const wrongLetter = new Audio('file:///Users/ida/Downloads/buzzer.mp3');
+const rightLetter = new Audio('file:///Users/ida/Downloads/bell.mp3');
+const cheers = new Audio('file:///Users/ida/Downloads/cheers.mp3');
+const lose = new Audio('file:///Users/ida/Downloads/loser.mp3');
+const newGameButton = document.createElement("button");
+const newButtonParent = document.createElement("div");
+
 topCenterEl.appendChild(imgEl);
 document.body.style.backgroundImage = "url('https://i.imgur.com/q6Cs1ly.jpg')";
 document.body.style.backgroundSize = "cover";
 document.body.style.backgroundPosition = "center";
 
-const audio1 = new Audio('file:///Users/ida/Downloads/click.mp3');
-const audio2 = new Audio('file:///Users/ida/Downloads/buzzer.mp3');
-const audio3 = new Audio('file:///Users/ida/Downloads/bell.mp3');
-const cheers = new Audio('file:///Users/ida/Downloads/cheers.mp3');
-const lose = new Audio('file:///Users/ida/Downloads/loser.mp3');
-
-function removebackgroundimage () {
-    document.body.style.backgroundImage = "none";
-}
-
-const newGameButton = document.createElement("button");
-newGameButton.id = "newgame";
-newGameButton.classList.add("buttons");
-
-const newButtonParent = document.createElement("div");
-newButtonParent.id = "newdiv";
-
-function buttonShow() {
-    divParent.appendChild(newButtonParent);
-    newButtonParent.appendChild(newGameButton);
-    newGameButton.textContent = "New Game";
+/*----- event listeners -----*/
+for (let button of buttonsEl) {
+    button.addEventListener("click", init, true);
 }
 
 newGameButton.addEventListener("click", startNewGame);
+parent.addEventListener("click", displayId);
+
+/*----- functions -----*/
+function removebackgroundimage () {
+    document.body.style.backgroundImage = "none";
+}
 
 function startNewGame () {
     location.reload();
 }
 
-/*----- event listeners -----*/
-for (let button of buttonsEl) {
-    button.addEventListener("click", displayLetters, true);
+function buttonShow() {
+    divParent.appendChild(newButtonParent);
+    newButtonParent.appendChild(newGameButton);
+    newGameButton.textContent = "New Game";
+    newGameButton.id = "newgame";
+    newGameButton.classList.add("buttons");
+    newButtonParent.id = "newdiv";
 }
 
-parent.addEventListener("click", displayId);
-
-/*----- functions -----*/
-
-guesses = 6;
-let sum = " ";
-
-function displayLetters (e) {
-
-    audio1.play();
-    row1El.style.borderTop = "2px solid black";
+function init (e) {
+    buttonClick.play();
+    displayTextEl.style.borderTop = "2px solid black";
+    clearText ();
+    removebackgroundimage();
+    imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
 
     letterA.innerText = "A";
     letterA.classList.add("letter");
@@ -323,108 +311,45 @@ function displayLetters (e) {
 
     const idEl = String(e.target.id);
     if (idEl === "button1") {
-        spot = Math.floor(Math.random() * 3);
         array = country;
-        let a = array[spot];
-        let z = a.split('');
-        for (var i = 0; i <z.length; i++){
-            z[i] = "_";
-        };
-        console.log(z);
-        row1El.innerText = z.join(" ");
-        countryEl.style.backgroundColor = "grey";
+        missingLetters (e);
         singerEl.remove();
         cityEl.remove();
-        noclick();
-        gameName.textContent = "Country"
-        gameName.style.color = "grey";
     } else if (idEl === "button2") {
-        spot = Math.floor(Math.random() * 3);
-        console.log(spot);
         array = singer;
-        console.log(array);
-        let a = array[spot];
-        console.log(a);
-        let z = a.split('');
-        console.log(z);
-        for (var i = 0; i <z.length; i++){
-            z[i] = "_";
-        };
-        console.log(z);
-        row1El.innerText = z.join(" ");
-        singerEl.style.backgroundColor = "grey";
+        missingLetters (e);
         countryEl.remove();
         cityEl.remove();
-        noclick();
-        gameName.textContent = "Singer"
-        gameName.style.color = "grey";
     } else if (idEl === "button3") {
-        spot = Math.floor(Math.random() * 3);
-        console.log(spot);
         array = city;
-        let a = array[spot];
-        let z = a.split('');
-        for (var i = 0; i <z.length; i++){
-            z[i] = "_";
-        };
-        row1El.innerText = z.join(" ");
-        cityEl.style.backgroundColor = "grey";
+        missingLetters (e);
         singerEl.remove();
         countryEl.remove();
-        noclick();
-        gameName.textContent = "City";
-        gameName.style.color = "grey";
     }
-
-    function noclick () {
-        for (let button of buttonsEl) {
-            button.removeEventListener("click", displayLetters, true);
-        }
-    }
-    clearText ();
-    removebackgroundimage();
-    // console.log(typeof(e.target.id));
-    imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
 } 
 
 function displayId (e) {
     document.getElementById(e.target.id).style.backgroundColor = "grey";
     let location = String(e.target.id);
-    console.log(location);
-    console.log(array);
-    console.log(spot);
     let d = array[spot];
-    console.log(d); 
-
     for (let word of d) {
-        console.log(word);
         if (d.includes(location)) {
             for (let i = 0; i < d.length; i++) {
-                console.log(d[i]);
                 if (location === d[i]) {
-                    
                     let locationUppercase = location.toUpperCase();
                     if (newArray.includes(locationUppercase) === false) {
-                        audio3.play();
+                        rightLetter.play();
                     };
                     newArray[i] = locationUppercase;
-                    console.log(newArray);
-                    const displayArray = row1El.innerText.split(' ');
-                    console.log(displayArray);
+                    const displayArray = displayTextEl.innerText.split(' ');
                     displayArray[i] = locationUppercase;
-                    row1El.innerText = displayArray.join(' ');
+                    displayTextEl.innerText = displayArray.join(' ');
                     if (newArray.join('') === d.toUpperCase()) {
-                        gameName.textContent = "Winner!";
-                        gameName.style.color = "green";
-                        divParent.appendChild(gameName);
-                        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
-                        noClick();
-                        parent.remove();
-                        buttonShow ();
-                        allbuttons.remove();
-                        hintEl.remove();
-                        letterSelectedEl.remove();
+                        renderedText = "Winner!";
+                        renderedTextColor = "green";
+                        render();
                         cheers.play();
+                        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
                     }
                 } 
             }
@@ -432,23 +357,21 @@ function displayId (e) {
             if (wrongArray.includes(location)) {
                 return wrongArray;
             } else {
-                audio2.play();
+                wrongLetter.play();
                 wrongArray.push(location);
                 sum = sum + (wrongArray[wrongArray.length - 1]).toUpperCase() + ", ";
                 letterSelectedEl.innerHTML = "Incorrect Guesses:" + sum;
                 letterSelectedEl.style.color = "red";
-                } guesses = guesses - 1;
-            }        
-        
-        if (guesses === 0) {
-            gameName.textContent = "You lost! Game over";
-            gameName.style.color = "red";
-            divParent.appendChild(gameName);
-            console.log(gameName);
-            noClick();
-            parent.remove();
-            buttonShow();
-            allbuttons.remove()
+                guesses = guesses - 1;
+                }  
+            } 
+        if (guesses <= 0) {
+            renderedText = "You lost! Game over";
+            renderedTextColor = "red";
+            render();
+            lose.play();
+            displayTextEl.textContent = array[spot].toUpperCase();
+            imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
         } if (guesses === 5) {
             imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
         } if (guesses === 4 ) {
@@ -493,15 +416,10 @@ function displayId (e) {
                     hintEl.innerHTML = "<h1>HINT</h1><p style='color: black;'> - located in Mexico<br> - final scene of The Shawshank Redemption</p>";
                 }
             }
-        } if (guesses <= 0) {
-            imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
-            hintEl.remove();
-            lose.play();
-            row1El.textContent = array[spot].toUpperCase();
-        }  if (newArray.join('') === d.toUpperCase()) {
+        } if (newArray.join('') === d.toUpperCase()) {
             imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
         }
-    }
+    } 
 }
 
 function noClick () {
@@ -509,12 +427,32 @@ function noClick () {
 }
 
 function clearText () {
-    selectCat.remove();
-    allbuttons.remove();
+    selectCategory.remove();
+    allButtons.remove();
 }
 
+function missingLetters (e) {
+    spot = Math.floor(Math.random() * 3);
+    let a = array[spot];
+    let z = a.split('');
+    for (var i = 0; i <z.length; i++){
+        z[i] = "_";
+    };
+    displayTextEl.innerText = z.join(" ");
+    gameName.textContent = e.target.textContent;
+    gameName.style.color = "grey";
+}
 
-
+function render () {
+    gameName.textContent = renderedText;
+    gameName.style.color = renderedTextColor;
+    divParent.appendChild(gameName);
+    noClick();
+    parent.remove();
+    buttonShow();
+    allButtons.remove()
+    hintEl.remove();
+}
 
 
 
