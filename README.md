@@ -6,6 +6,10 @@ To play, select a category between "Countries", "Singers" and "Cities". A secret
 * If correct, the letter is added to every position in the word it appears, and the letter is greyed out from the keyboard and becomes unselectable. 
 * If incorrect, the letter selected is displayed on the screen as an incorrect guess and a body part is added to the gallows.
 
-Repeat until the game is won, or until six incorrect guesses where all body parts are added to the gallows and the game is lost. 
+After five incorrect guesses, a hint pops up. On the sixth incorrect guess, all body parts are added to the gallows and the game is lost. 
+The game is won when all letters of the word are guessed. 
 
-![screenshot1](https://i.imgur.com/1rccZ4q.jpg)
+
+![homescreen](https://i.imgur.com/1rccZ4q.jpg)
+![playingscreen](https://i.imgur.com/868LKCy.png)
+![winningscreen](https://i.imgur.com/VVc9LWy.png)
