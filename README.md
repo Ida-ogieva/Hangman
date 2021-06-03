@@ -8,4 +8,4 @@ To play, select a category between "Countries", "Singers" and "Cities". A secret
 
 Repeat until the game is won, or until six incorrect guesses where all body parts are added to the gallows and the game is lost. 
 
-![screenshot1](file:///Users/ida/Desktop/screenshot1.png)
+![screenshot1](https://i.imgur.com/1rccZ4q.jpg)
