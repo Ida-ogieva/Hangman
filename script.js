@@ -1,6 +1,6 @@
 
 /*----- constants -----*/
-const country1 = ["algeria", "seychelles", "serbia"];
+const country1 = ["algeria", "seychelles", "ghana"];
 const singer1 = ["dido", "pharell", "eagles"];
 const city1 = ["london", "miami", "zihuatenejo"];
 
@@ -519,40 +519,47 @@ function displayId (e) {
             imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
             if (array === country1) {
                 if (spot === 0) {
-                    // hintImgEl.id = "hintsection";
-                    // divParent.appendChild(hintImgEl);
-                    // hintImgEl.src = "https://i.imgur.com/BJLLPOt.png";
-                    // hintImgEl.
                     hintEl.style.border = "1px solid black";
                     hintEl.innerHTML = "<h1>HINT</h1><p> - located in North Africa<br> - shares borders with Morocco, Tunisia and Libya </p>";
-                    
-
+                } else if (spot === 1) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - An island nation located northeast of Madagascar<br> - sea shells</p>";
+                } else if (spot ===2 ) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - The second-most populous country in West Africa, after Nigeria<br> - birth country of Alex Ghose</p>";
+                }                 
+            } else if (array === singer1) {
+                if (spot === 0) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - british singer <br> - best known for her 2000's hit 'Thank You' and her feature with Eminem on 'Stan'</p>";
+                } else if (spot === 1) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - singer-songwriter and producer <br> - 'Blurred Lines', 'Get Lucky', 'Happy'</p>";
+                } else if (spot === 2) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - American rock band responsible for one of the greatest songs of all time 'Hotel California'</p>";
+                } 
+            } else if (array === city1) {
+                if (spot === 0) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - Home to 'Big Ben' <br> - Arsenal, Chelsea, Tottenham, West Ham ...</p>";
+                } else if (spot === 1) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - located in Florida<br> - Dolphins, Marlins, Heat</p>";
+                } else if (spot ===2) {
+                    hintEl.style.border = "1px solid black";
+                    hintEl.innerHTML = "<h1>HINT</h1><p> - located in Mexico<br> - final scene of The Shawshank Redemption</p>";
                 }
-                        // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
-        } else if (array === singer1) {
-            if (spot === 0) {
-            // hintEl.innerHTML = "<strong>Hint</strong> <br> <br> <br> <br> <br>";
-            hintEl.id = "hintsection";
-            hintEl.style.backgroundImage = "url('https://i.imgur.com/Y92lwh9.jpg')";
-            hintEl.style.backgroundSize = "75%";
-            hintEl.style.backgroundRepeat = "no-repeat";
-            } else if (spot === 1){
-
             }
-        } else if (array === city1) {
-
+        } if (guesses <= 0) {
+            imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
+            hintEl.remove();
+            lose.play();
+            row1El.textContent = array[spot].toUpperCase();
+        }  if (newArray.join('') === d.toUpperCase()) {
+            imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
         }
-    } if (guesses <= 0) {
-        imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
-        hintEl.remove();
-        lose.play();
-        row1El.textContent = array[spot].toUpperCase();
-    }  if (newArray.join('') === d.toUpperCase()) {
-        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
     }
-       
-// below this
-}
 }
 
 
