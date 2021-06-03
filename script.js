@@ -1,10 +1,13 @@
 
 /*----- constants -----*/
-const country1 = ["nigeria"];
-const singer1 = ["dido"];
-const city1 = ["kumasi"];
+const country1 = ["algeria", "seychelles", "serbia"];
+const singer1 = ["dido", "pharell", "eagles"];
+const city1 = ["london", "miami", "zihuatenejo"];
 
-const alphabets = "abcdefghijklmnopqrstuvwxyz";
+let spot;
+
+
+// const alphabets = "abcdefghijklmnopqrstuvwxyz";
 
 /*----- app's state (variables) -----*/
 let category;
@@ -12,6 +15,7 @@ let words;
 let winner;
 let guesses;
 let array;
+
 
 
 /*----- cached element references -----*/
@@ -113,7 +117,6 @@ function startNewGame () {
 /*----- event listeners -----*/
 for (let button of buttonsEl) {
     button.addEventListener("click", displayLetters, true);
-    audio1.play();
 }
 
 parent.addEventListener("click", displayId);
@@ -127,112 +130,8 @@ guesses = 6;
 let sum = " ";
 
 
-
-
-
-function displayId (e) {
-    document.getElementById(e.target.id).style.backgroundColor = "grey";
-    let location = String(e.target.id);
-    for (let word of array) {
-        if (word.includes(location)) {
-            for (let i = 0; i < word.length; i++) {
-                if (location === word[i]) {
-                    
-                    let locationUppercase = location.toUpperCase();
-                    if (newArray.includes(locationUppercase) === false) {
-                        audio3.play();
-                    };
-                    newArray[i] = locationUppercase;
-                    const displayArray = row1El.innerText.split(' ');
-                    displayArray[i] = locationUppercase;
-                    row1El.innerText = displayArray.join(' ');
-                    if (newArray.join('') === word.toUpperCase()) {
-                        gameName.textContent = "Winner!";
-                        gameName.style.color = "green";
-                        divParent.appendChild(gameName);
-                        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
-                        noClick();
-                        parent.remove();
-                        buttonShow ();
-                        allbuttons.remove();
-                        hintEl.remove();
-                        letterSelectedEl.remove();
-                        cheers.play();
-                    }
-                } 
-            }
-        } else {
-            if (wrongArray.includes(location)) {
-                return wrongArray;
-            } else {
-                audio2.play();
-                wrongArray.push(location);
-                sum = sum + (wrongArray[wrongArray.length - 1]).toUpperCase() + ", ";
-                letterSelectedEl.innerHTML = "Incorrect Guesses:" + sum;
-                letterSelectedEl.style.color = "red";
-                } guesses = guesses - 1;
-            }
-        
-                                 //curly braces here 
-
-        
-        if (guesses === 0) {
-            gameName.textContent = "You lost! Game over";
-            gameName.style.color = "red";
-            divParent.appendChild(gameName);
-            console.log(gameName);
-            noClick();
-            parent.remove();
-            buttonShow();
-            // row1El.remove();
-            allbuttons.remove()
-        } if (guesses === 5) {
-            imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
-        } if (guesses === 4 ) {
-            imgEl.src = "https://i.imgur.com/FwM5s1f.jpg";
-        } if (guesses === 3 ) {
-            imgEl.src = "https://i.imgur.com/MZaJ0B6.jpg";
-        } if (guesses === 2 ) {
-            imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
-        } if (guesses === 1) {
-            imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
-            if (array === country1) {
-            // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
-        } else if (array === singer1) {
-            // hintEl.innerHTML = "<strong>Hint</strong> <br> <br> <br> <br> <br>";
-            hintEl.id = "hintsection";
-            hintEl.style.backgroundImage = "url('https://i.imgur.com/Y92lwh9.jpg')";
-            hintEl.style.backgroundSize = "75%";
-            hintEl.style.backgroundRepeat = "no-repeat";
-        } else if (array === city1) {
-
-        }
-    } if (guesses <= 0) {
-        imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
-        hintEl.remove();
-        lose.play();
-        row1El.textContent = singer1[0].toUpperCase();
-    }  if (newArray.join('') === word.toUpperCase()) {
-        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
-    }
-       
-
-}
-
-}
-
-
-function noClick () {
-    parent.removeEventListener("click", displayId);
-}
-
-function clearText () {
-    selectCat.remove();
-    allbuttons.remove();
-}
-
-
 function displayLetters (e) {
+
     audio1.play();
     row1El.style.borderTop = "2px solid black";
 
@@ -446,8 +345,18 @@ function displayLetters (e) {
 
     const idEl = String(e.target.id);
     if (idEl === "button1") {
-        row1El.innerText = " _ _ _ _ _ _ _";
+        spot = Math.floor(Math.random() * 3);
+        // row1El.innerText = " _ _ _ _ _ _ _";
         array = country1;
+        let a = array[spot];
+        let z = a.split('');
+        for (var i = 0; i <z.length; i++){
+            z[i] = "_";
+            // return a;
+        };
+        console.log(z);
+        row1El.innerText = z.join(" ");
+
         countryEl.style.backgroundColor = "grey";
 
         singerEl.remove();
@@ -457,24 +366,59 @@ function displayLetters (e) {
         gameName.style.color = "grey";
 
     } else if (idEl === "button2") {
-        row1El.innerText = "_ _ _ _";
+        spot = Math.floor(Math.random() * 3);
+        console.log(spot);
         array = singer1;
+        console.log(array);
+        let a = array[spot];
+        console.log(a);
+        let z = a.split('');
+        console.log(z);
+
+        for (var i = 0; i <z.length; i++){
+            z[i] = "_";
+            // return a;
+        };
+        console.log(z);
+        row1El.innerText = z.join(" ");
         singerEl.style.backgroundColor = "grey";
         countryEl.remove();
         cityEl.remove();
         noclick();
         gameName.textContent = "Singer"
         gameName.style.color = "grey";
+        // row1El.innerText = "_ _ _ _";
+        // return spot;
+        // return array;
+
+
     } else if (idEl === "button3") {
-        row1El.innerText = "_ _ _ _ _ _";
+        // row1El.innerText = "_ _ _ _ _ _";
+        
+
+        spot = Math.floor(Math.random() * 3);
+        console.log(spot);
         array = city1;
+        let a = array[spot];
+        let z = a.split('');
+
+        for (var i = 0; i <z.length; i++){
+            z[i] = "_";
+            // return a;
+        };
+        row1El.innerText = z.join(" ");
         cityEl.style.backgroundColor = "grey";
         singerEl.remove();
         countryEl.remove();
         noclick();
         gameName.textContent = "City";
         gameName.style.color = "grey";
+        // console.log(array);
+        // return array;
+        // return spot;
     }
+
+    
 
     function noclick () {
         for (let button of buttonsEl) {
@@ -492,6 +436,125 @@ function displayLetters (e) {
     imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
     
 } 
+
+console.log(array);
+
+
+function displayId (e) {
+    document.getElementById(e.target.id).style.backgroundColor = "grey";
+    let location = String(e.target.id);
+    console.log(location);
+    console.log(array);
+    console.log(spot);
+    let d = array[spot];
+    console.log(d); 
+
+    for (let word of d) {
+        console.log(word);
+        if (d.includes(location)) {
+            for (let i = 0; i < d.length; i++) {
+                console.log(d[i]);
+                if (location === d[i]) {
+                    
+                    let locationUppercase = location.toUpperCase();
+                    if (newArray.includes(locationUppercase) === false) {
+                        audio3.play();
+                    };
+                    newArray[i] = locationUppercase;
+                    console.log(newArray);
+                    const displayArray = row1El.innerText.split(' ');
+                    console.log(displayArray);
+                    displayArray[i] = locationUppercase;
+                    row1El.innerText = displayArray.join(' ');
+                    if (newArray.join('') === d.toUpperCase()) {
+                        gameName.textContent = "Winner!";
+                        gameName.style.color = "green";
+                        divParent.appendChild(gameName);
+                        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
+                        noClick();
+                        parent.remove();
+                        buttonShow ();
+                        allbuttons.remove();
+                        hintEl.remove();
+                        letterSelectedEl.remove();
+                        cheers.play();
+                    }
+                } 
+            }
+        } else {
+            if (wrongArray.includes(location)) {
+                return wrongArray;
+            } else {
+                audio2.play();
+                wrongArray.push(location);
+                sum = sum + (wrongArray[wrongArray.length - 1]).toUpperCase() + ", ";
+                letterSelectedEl.innerHTML = "Incorrect Guesses:" + sum;
+                letterSelectedEl.style.color = "red";
+                } guesses = guesses - 1;
+            }
+        
+                                 //curly braces here 
+
+        
+        if (guesses === 0) {
+            gameName.textContent = "You lost! Game over";
+            gameName.style.color = "red";
+            divParent.appendChild(gameName);
+            console.log(gameName);
+            noClick();
+            parent.remove();
+            buttonShow();
+            // row1El.remove();
+            allbuttons.remove()
+        } if (guesses === 5) {
+            imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
+        } if (guesses === 4 ) {
+            imgEl.src = "https://i.imgur.com/FwM5s1f.jpg";
+        } if (guesses === 3 ) {
+            imgEl.src = "https://i.imgur.com/MZaJ0B6.jpg";
+        } if (guesses === 2 ) {
+            imgEl.src = "https://i.imgur.com/rb5i10Q.jpg";
+        } if (guesses === 1) {
+            imgEl.src = "https://i.imgur.com/OgOM0yV.jpg";
+            if (array === country1) {
+            // hintEl.innerHTML = " <strong>Hint</strong> <br> I am testing <br> <br> <br> <br>";
+        } else if (array === singer1) {
+            // hintEl.innerHTML = "<strong>Hint</strong> <br> <br> <br> <br> <br>";
+            hintEl.id = "hintsection";
+            hintEl.style.backgroundImage = "url('https://i.imgur.com/Y92lwh9.jpg')";
+            hintEl.style.backgroundSize = "75%";
+            hintEl.style.backgroundRepeat = "no-repeat";
+        } else if (array === city1) {
+
+        }
+    } if (guesses <= 0) {
+        imgEl.src = "https://i.imgur.com/5kwOsQK.jpg";
+        hintEl.remove();
+        lose.play();
+        row1El.textContent = array[spot].toUpperCase();
+    }  if (newArray.join('') === d.toUpperCase()) {
+        imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
+    }
+       
+// below this
+}
+}
+
+
+
+
+
+function noClick () {
+    parent.removeEventListener("click", displayId);
+}
+
+function clearText () {
+    selectCat.remove();
+    allbuttons.remove();
+}
+
+
+
 
 
 
