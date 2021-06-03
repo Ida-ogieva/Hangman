@@ -4,19 +4,13 @@ const country = ["algeria", "seychelles", "ghana"];
 const singer = ["dido", "pharell", "eagles"];
 const city = ["london", "miami", "zihuatenejo"];
 
-let spot;
-
-
-// const alphabets = "abcdefghijklmnopqrstuvwxyz";
-
 /*----- app's state (variables) -----*/
+let spot;
 let category;
 let words;
 let winner;
 let guesses;
 let array;
-
-
 
 /*----- cached element references -----*/
 const letterSelectedEl = document.getElementById("right");
@@ -74,21 +68,10 @@ document.body.style.backgroundSize = "cover";
 document.body.style.backgroundPosition = "center";
 
 const audio1 = new Audio('file:///Users/ida/Downloads/click.mp3');
-
 const audio2 = new Audio('file:///Users/ida/Downloads/buzzer.mp3');
-
 const audio3 = new Audio('file:///Users/ida/Downloads/bell.mp3');
-
 const cheers = new Audio('file:///Users/ida/Downloads/cheers.mp3');
-
 const lose = new Audio('file:///Users/ida/Downloads/loser.mp3');
-
-
-
-// letterSelectedEl.innerHTML = "Incorrect Guesses:"
-
-
-
 
 function removebackgroundimage () {
     document.body.style.backgroundImage = "none";
@@ -111,9 +94,7 @@ newGameButton.addEventListener("click", startNewGame);
 
 function startNewGame () {
     location.reload();
-    
 }
-
 
 /*----- event listeners -----*/
 for (let button of buttonsEl) {
@@ -122,14 +103,10 @@ for (let button of buttonsEl) {
 
 parent.addEventListener("click", displayId);
 
-
-
 /*----- functions -----*/
-
 
 guesses = 6;
 let sum = " ";
-
 
 function displayLetters (e) {
 
@@ -347,25 +324,20 @@ function displayLetters (e) {
     const idEl = String(e.target.id);
     if (idEl === "button1") {
         spot = Math.floor(Math.random() * 3);
-        // row1El.innerText = " _ _ _ _ _ _ _";
         array = country;
         let a = array[spot];
         let z = a.split('');
         for (var i = 0; i <z.length; i++){
             z[i] = "_";
-            // return a;
         };
         console.log(z);
         row1El.innerText = z.join(" ");
-
         countryEl.style.backgroundColor = "grey";
-
         singerEl.remove();
         cityEl.remove();
         noclick();
         gameName.textContent = "Country"
         gameName.style.color = "grey";
-
     } else if (idEl === "button2") {
         spot = Math.floor(Math.random() * 3);
         console.log(spot);
@@ -375,10 +347,8 @@ function displayLetters (e) {
         console.log(a);
         let z = a.split('');
         console.log(z);
-
         for (var i = 0; i <z.length; i++){
             z[i] = "_";
-            // return a;
         };
         console.log(z);
         row1El.innerText = z.join(" ");
@@ -388,24 +358,14 @@ function displayLetters (e) {
         noclick();
         gameName.textContent = "Singer"
         gameName.style.color = "grey";
-        // row1El.innerText = "_ _ _ _";
-        // return spot;
-        // return array;
-
-
     } else if (idEl === "button3") {
-        // row1El.innerText = "_ _ _ _ _ _";
-        
-
         spot = Math.floor(Math.random() * 3);
         console.log(spot);
         array = city;
         let a = array[spot];
         let z = a.split('');
-
         for (var i = 0; i <z.length; i++){
             z[i] = "_";
-            // return a;
         };
         row1El.innerText = z.join(" ");
         cityEl.style.backgroundColor = "grey";
@@ -414,32 +374,18 @@ function displayLetters (e) {
         noclick();
         gameName.textContent = "City";
         gameName.style.color = "grey";
-        // console.log(array);
-        // return array;
-        // return spot;
     }
-
-    
 
     function noclick () {
         for (let button of buttonsEl) {
             button.removeEventListener("click", displayLetters, true);
         }
     }
-    // unclickable ();
     clearText ();
-    // imageDisplay();
     removebackgroundimage();
-
-
-    console.log(typeof(e.target.id));
-
+    // console.log(typeof(e.target.id));
     imgEl.src = "https://i.imgur.com/xR7DNZr.jpg";
-    
 } 
-
-console.log(array);
-
 
 function displayId (e) {
     document.getElementById(e.target.id).style.backgroundColor = "grey";
@@ -492,10 +438,7 @@ function displayId (e) {
                 letterSelectedEl.innerHTML = "Incorrect Guesses:" + sum;
                 letterSelectedEl.style.color = "red";
                 } guesses = guesses - 1;
-            }
-        
-                                 //curly braces here 
-
+            }        
         
         if (guesses === 0) {
             gameName.textContent = "You lost! Game over";
@@ -505,7 +448,6 @@ function displayId (e) {
             noClick();
             parent.remove();
             buttonShow();
-            // row1El.remove();
             allbuttons.remove()
         } if (guesses === 5) {
             imgEl.src = "https://i.imgur.com/5FdV1xk.jpg";
@@ -561,10 +503,6 @@ function displayId (e) {
         }
     }
 }
-
-
-
-
 
 function noClick () {
     parent.removeEventListener("click", displayId);
