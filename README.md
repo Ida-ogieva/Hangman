@@ -18,7 +18,7 @@ The game is won when all letters of the word are guessed.
 * JavaScript, HTML, CSS.
 
 ## GETTING STARTED
-https://ida-ogieva.github.io/Project-1/
+https://ida-ogieva.github.io/Hangman/
 
 ## NEXT STEPS
 * make game responsive on phone screens.
